@@ -14,8 +14,7 @@ class GroupsSeeder extends Seeder
     public function run(): void
     {
         DB::table('groups')->insert([
-            'uk' => ['name' => 'КН-22'],
-            'en' => ['name' => 'CS-22'],
+            'name' => 'КН-22',
             'supervisor_id' => 1,
         ]);
     }

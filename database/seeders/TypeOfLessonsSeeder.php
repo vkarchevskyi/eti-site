@@ -15,25 +15,17 @@ class TypeOfLessonsSeeder extends Seeder
     {
         DB::table('type_of_lessons')->insert([
             [
-                'uk' => [
-                    'name' => 'Лабораторна работа',
-                    'short_name' => 'лб',
-                ],
-                'en' => [
-                    'name' => 'Laboratory work',
-                    'short_name' => 'lab',
-                ],
+                'name' => 'Лабораторна работа',
+                'short_name' => 'лб',
             ],
             [
-                'uk' => [
-                    'name' => 'Семінар',
-                    'short_name' => 'с',
-                ],
-                'en' => [
-                    'name' => 'Seminar',
-                    'short_name' => 's',
-                ],
+                'name' => 'Семінар',
+                'short_name' => 'с',
             ],
+            [
+                'name' => 'Лекція',
+                'short_name' => 'л'
+            ]
         ]);
     }
 }

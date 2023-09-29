@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Spatie\Translatable\HasTranslations;
+
 
 
 /**
@@ -20,7 +20,7 @@ use Spatie\Translatable\HasTranslations;
 class Group extends Model
 {
     use HasFactory;
-    use HasTranslations;
+
 
     public array $translatable = [
         'name'

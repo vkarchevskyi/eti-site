@@ -15,32 +15,25 @@ class DayOfWeeksSeeder extends Seeder
     {
         DB::table('day_of_weeks')->insert([
             [
-                'uk' => ['name' => 'Понеділок',],
-                'en' => ['name' => 'Monday',],
+                'name' => 'Понеділок'
             ],
             [
-                'uk' => ['name' => 'Вівторок'],
-                'en' => ['name' => 'Tuesday'],
+                'name' => 'Вівторок'
             ],
             [
-                'uk' => ['name' => 'Середа'],
-                'en' => ['name' => 'Wednesday'],
+                'name' => 'Середа'
             ],
             [
-                'uk' => ['name' => 'Четвер'],
-                'en' => ['name' => 'Thursday'],
+                'name' => 'Четвер'
             ],
             [
-                'uk' => ['name' => 'П\'ятниця'],
-                'en' => ['name' => 'Friday'],
+                'name' => 'П\'ятниця'
             ],
             [
-                'uk' => ['name' => 'Субота'],
-                'en' => ['name' => 'Saturday'],
+                'name' => 'Субота'
             ],
             [
-                'uk' => ['name' => 'Неділя'],
-                'en' => ['name' => 'Sunday'],
+                'name' => 'Неділя'
             ],
         ]);
     }

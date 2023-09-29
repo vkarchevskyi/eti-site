@@ -13,22 +13,9 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
             $table->softDeletes();
-        });
-
-        Schema::create('course_translation', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('course_id');
-            $table->string('locale', 2);
-            $table->string('name');
-
-            $table->unique(['course_id', 'locale']);
-            $table->foreign('course_id')
-                ->references('id')
-                ->on('courses')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
         });
     }
 
