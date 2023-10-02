@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('short_description');
+            $table->string('short_description', 1024);
             $table->text('content');
             $table->timestamps();
             $table->softDeletes();
