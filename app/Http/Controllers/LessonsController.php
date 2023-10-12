@@ -3,9 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Actions\CreateLesson;
-use App\Actions\GetGroupLessons;
-use App\Actions\GetLessons;
+use App\Actions\Lessons\CreateLesson;
+use App\Actions\Lessons\GetGroupLessons;
 use App\Models\Course;
 use App\Models\Group;
 use App\Models\Lesson;
@@ -39,7 +38,7 @@ class LessonsController extends Controller
     public function store(Request $request): RedirectResponse
     {
         app(CreateLesson::class)->execute($request);
-        return redirect('lessons.create');
+        return redirect('lessons/create');
     }
 
     public function index(Request $request)

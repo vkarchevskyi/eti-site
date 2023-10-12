@@ -1,4 +1,5 @@
-<!doctype html>
+@php use App\Enums\Days; @endphp
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,40 +17,10 @@
 <body>
 <form action="{{ route('lessons.store') }}" method="POST">
     @csrf
-    @php
-        $days = [[
-            'name_uk' => 'Понеділок',
-            'name_en' => 'Monday',
-        ],
-        [
-            'name_uk' => 'Вівторок',
-            'name_en' => 'Tuesday',
-        ],
-        [
-            'name_uk' => 'Середа',
-            'name_en' => 'Wednesday',
-        ],
-        [
-            'name_uk' => 'Четвер',
-            'name_en' => 'Thursday',
-        ],
-        [
-            'name_uk' => 'П\'ятниця',
-            'name_en' => 'Friday',
-        ],
-        [
-            'name_uk' => 'Субота',
-            'name_en' => 'Saturday',
-        ],
-        [
-            'name_uk' => 'Неділя',
-            'name_en' => 'Sunday',
-        ]];
-    @endphp
     <label for="group">Група: </label>
     <select name="groupId" id="group">
         @foreach($groups as $group)
-            <option value="{{ $group->id }}">{{ $group->name_uk }}</option>
+            <option value="{{ $group->id }}">{{ $group->name }}</option>
         @endforeach
     </select>
     <label for="order">Номер пари:</label>
@@ -74,25 +45,25 @@
     <label for="typeOfLesson">Тип пари:</label>
     <select name="typeOfLessonId" id="typeOfLesson">
         @foreach($types as $type)
-            <option value="{{ $type->id }}">{{ $type->name_uk }}</option>
+            <option value="{{ $type->id }}">{{ $type->name }}</option>
         @endforeach
     </select>
     <label for="teacher">Викладач: </label>
     <select name="teacherId" id="teacher">
         @foreach($teachers as $teacher)
-            <option value="{{ $teacher->id }}">{{ $teacher->second_name_uk . ' ' . $teacher->first_name_uk }}</option>
+            <option value="{{ $teacher->id }}">{{ $teacher->second_name . ' ' . $teacher->first_name }}</option>
         @endforeach
     </select>
     <label for="course">Предмет: </label>
     <select name="courseId" id="course">
         @foreach($courses as $course)
-            <option value="{{ $course->id }}">{{ $course->name_uk }}</option>
+            <option value="{{ $course->id }}">{{ $course->name }}</option>
         @endforeach
     </select>
     <label for="dayOfWeek">День тижня: </label>
     <select name="dayOfWeekId" id="dayOfWeek">
         @for($i = 1; $i <= 7; $i++)
-            <option value="{{ $i }}">{{ $days[$i - 1]['name_uk'] }}</option>
+            <option value="{{ $i }}">{{ Days::DAYS[$i] }}</option>
         @endfor
     </select>
     <label for="timeFrom">Початок пари</label>

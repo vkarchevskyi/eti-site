@@ -39,6 +39,10 @@ class TeachersSeeder extends Seeder
                 'first_name' => 'А.М.',
                 'second_name' => 'Свобода',
             ],
+            [
+                'first_name' => 'К.Ю.',
+                'second_name' => 'Сурков',
+            ],
         ];
 
         foreach ($teachers as $teacher) {

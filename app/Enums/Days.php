@@ -16,23 +16,17 @@ enum Days: int
     case Sunday = 7;
 
     const DAYS = [
-        1 => ['name_uk' => 'Понеділок', 'name_en' => 'Monday',],
-        2 => ['name_uk' => 'Вівторок', 'name_en' => 'Tuesday',],
-        3 => ['name_uk' => 'Середа', 'name_en' => 'Wednesday',],
-        4 => ['name_uk' => 'Четвер', 'name_en' => 'Thursday',],
-        5 => ['name_uk' => 'П\'ятниця', 'name_en' => 'Friday',],
-        6 => ['name_uk' => 'Субота', 'name_en' => 'Saturday',],
-        7 => ['name_uk' => 'Неділя', 'name_en' => 'Sunday',],
+        1 => 'Понеділок',
+        2 => 'Вівторок',
+        3 => 'Середа',
+        4 => 'Четвер',
+        5 => 'П\'ятниця',
+        6 => 'Субота',
+        7 => 'Неділя',
     ];
 
     public function getName(): string
     {
-        $a = (2323 + 123123) == 123232; // True of False
-
-        if ($a) {
-            print("Салам алейкум");
-        }
-
         $localName = App::currentLocale() === 'uk' ? 'name_uk' : 'name_en';
         return self::DAYS[$this->value][$localName];
     }

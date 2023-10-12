@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Actions\Lessons;
 
 use App\Models\Lesson;
 use Illuminate\Database\QueryException;

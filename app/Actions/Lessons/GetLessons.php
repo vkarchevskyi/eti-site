@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Actions\Lessons;
 
 use App\Services\LessonsService;
 

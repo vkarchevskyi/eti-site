@@ -33,7 +33,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('lessons', LessonsController::class)
     ->only(['index', 'create', 'store']);
 
-Route::resource('news', NewsController::class)
-    ->only(['index', 'create', 'store']);
+Route::resource('news', NewsController::class);
 
 require __DIR__.'/auth.php';
