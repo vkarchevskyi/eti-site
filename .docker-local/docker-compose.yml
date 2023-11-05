@@ -1,5 +1,5 @@
 services:
-    mysql:
+    db:
         build: conf/mysql
         restart: always
         environment:
@@ -21,7 +21,7 @@ services:
         volumes:
             - ..:/var/www
         depends_on:
-            - mysql
+            - db
 
     adminer:
         build: conf/adminer
@@ -37,4 +37,4 @@ services:
         volumes:
             - /sessions
         depends_on:
-            - mysql
+            - db
