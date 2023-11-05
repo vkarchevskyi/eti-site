@@ -1,0 +1,40 @@
+services:
+    mysql:
+        build: conf/mysql
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+        ports:
+            - ${FORWARD_DB_PORT:-3306}:3306
+        volumes:
+            - ./conf/mysql/db-data:/var/lib/mysql
+            - ./conf/mysql/config.cnf:/etc/mysql/conf.d/config.cnf
+
+    backend:
+        build: ..
+        restart: always
+        ports:
+            - 80:80
+        volumes:
+            - ..:/var/www
+        depends_on:
+            - mysql
+
+    adminer:
+        build: conf/adminer
+        environment:
+            - ADMINER_DEFAULT_SERVER=${DB_HOST}
+            - ADMINER_DEFAULT_USER=${DB_USERNAME}
+            - ADMINER_DEFAULT_PASSWORD=${DB_PASSWORD}
+            - ADMINER_DEFAULT_TYPE=postgresql
+            - ADMINER_DEFAULT_PORT=${DB_PORT}
+        restart: always
+        ports:
+            - 8080:8080
+        volumes:
+            - /sessions
+        depends_on:
+            - mysql
