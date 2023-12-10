@@ -51,6 +51,9 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Lesson withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Lesson withoutTrashed()
+ * @property int|null $room_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereRoomId($value)
+ * @property-read \App\Models\Room|null $room
  * @mixin \Eloquent
  */
 class Lesson extends Model
@@ -88,5 +91,10 @@ class Lesson extends Model
     public function subgroup(): BelongsTo
     {
         return $this->belongsTo(Subgroup::class);
+    }
+
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class);
     }
 }

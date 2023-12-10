@@ -109,14 +109,21 @@ class LessonResource extends Resource
                             $set('time_to', self::TIMES_TO[$state - 1]);
                         }
                     }),
-                Forms\Components\Select::make('time_from')
-                    ->options(array_combine(self::TIMES_FROM, self::TIMES_FROM))
-                    ->placeholder('Обрати час')
-                    ->label('Час початку заняття'),
-                Forms\Components\Select::make('time_to')
-                    ->options(array_combine(self::TIMES_TO, self::TIMES_TO))
-                    ->placeholder('Обрати час')
-                    ->label('Час кінця заняття'),
+                Forms\Components\Select::make('room_id')
+                    ->label('Кабінет')
+                    ->relationship('room', 'name'),
+                Forms\Components\Grid::make()
+                    ->schema([
+                        Forms\Components\Select::make('time_from')
+                            ->options(array_combine(self::TIMES_FROM, self::TIMES_FROM))
+                            ->placeholder('Обрати час')
+                            ->label('Час початку заняття'),
+                        Forms\Components\Select::make('time_to')
+                            ->options(array_combine(self::TIMES_TO, self::TIMES_TO))
+                            ->placeholder('Обрати час')
+                            ->label('Час кінця заняття'),
+                    ])
+                ->columnSpan(1)
             ]);
     }
 
@@ -130,6 +137,8 @@ class LessonResource extends Resource
                     ->formatStateUsing(
                         fn(Lesson $record) => "{$record->teacher->first_name} {$record->teacher->second_name}"
                     ),
+                Tables\Columns\TextColumn::make('room.name')
+                    ->label('Номер кабінету'),
                 Tables\Columns\SelectColumn::make('is_numerator')
                     ->disabled()
                     ->options([

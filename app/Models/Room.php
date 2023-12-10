@@ -33,11 +33,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Room extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
-    protected $fillable = [
-        'room_type_id',
-        'name'
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     public function roomType(): BelongsTo
