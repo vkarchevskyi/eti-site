@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('lessons', [LessonsController::class, 'index']);
+//Route::get('lessons', [LessonsController::class, 'index']);
 
 Route::resource('news', NewsController::class);
 
