@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
@@ -29,12 +30,7 @@ use Illuminate\Database\Eloquent\Model;
 class TypeOfLesson extends Model
 {
     use HasFactory;
-
-
-    public array $translatable = [
-        'name',
-        'short_name',
-    ];
+    use SoftDeletes;
 
     protected $guarded = [
         'id',
