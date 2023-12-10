@@ -18,5 +18,8 @@ class RoomTypesSeeder extends Seeder
         RoomType::query()->create([
             'name' => 'Кабінет',
         ]);
+        RoomType::query()->create([
+            'name' => 'Комп\'ютерний кабінет',
+        ]);
     }
 }
