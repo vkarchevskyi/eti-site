@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Teacher
@@ -27,18 +28,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Teacher whereMiddleName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Teacher whereSecondName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Teacher whereUpdatedAt($value)
+ * @property int $can_be_supervisor
+ * @method static \Illuminate\Database\Eloquent\Builder|Teacher whereCanBeSupervisor($value)
  * @mixin \Eloquent
  */
 class Teacher extends Model
 {
     use HasFactory;
-    
-
-    public array $translatable = [
-        'first_name',
-        'second_name',
-        'middle_name',
-    ];
+    use SoftDeletes;
 
     protected $guarded = [
         'id',

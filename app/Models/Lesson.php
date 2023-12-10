@@ -55,7 +55,8 @@ use Illuminate\Support\Carbon;
  */
 class Lesson extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = [
         'id',
