@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LessonResource\Pages;
-use App\Filament\Resources\LessonResource\RelationManagers;
 use App\Models\Group;
 use App\Models\Lesson;
 use App\Models\Teacher;
@@ -21,6 +20,7 @@ class LessonResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $modelLabel = 'Пару';
     protected static ?string $pluralLabel = 'Пари';
 
     public const TIMES_FROM = [
