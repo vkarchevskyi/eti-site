@@ -124,7 +124,24 @@ class LessonResource extends Resource
     {
         return $table
             ->columns([
-//                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('group.name')
+                    ->label('Група'),
+                Tables\Columns\TextColumn::make('teacher')
+                    ->formatStateUsing(
+                        fn(Lesson $record) => "{$record->teacher->first_name} {$record->teacher->second_name}"
+                    ),
+                Tables\Columns\SelectColumn::make('is_numerator')
+                    ->disabled()
+                    ->options([
+                        null => 'Чисельник і знаменник',
+                        0 => 'Знаменник',
+                        1 => 'Чисельник'
+                    ])
+                    ->label('Розташування'),
+                Tables\Columns\TextColumn::make('time_from')
+                    ->label('Час початку'),
+                Tables\Columns\TextColumn::make('time_to')
+                    ->label('Час кінця'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
