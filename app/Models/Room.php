@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Room whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Room withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Room withoutTrashed()
+ * @property-read \App\Models\RoomType $roomType
  * @mixin \Eloquent
  */
 class Room extends Model
@@ -37,4 +39,9 @@ class Room extends Model
         'room_type_id',
         'name'
     ];
+
+    public function roomType(): BelongsTo
+    {
+        return $this->belongsTo(RoomType::class);
+    }
 }
