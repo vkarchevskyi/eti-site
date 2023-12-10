@@ -21,6 +21,8 @@ class LessonResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $pluralLabel = 'Пари';
+
     public const TIMES_FROM = [
         '08:30',
         '10:10',
