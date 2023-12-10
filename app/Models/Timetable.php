@@ -27,6 +27,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Timetable whereLessonId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Timetable whereSemesterId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Timetable whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Timetable withoutTrashed()
  * @mixin \Eloquent
  */
 class Timetable extends Model

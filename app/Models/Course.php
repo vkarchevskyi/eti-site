@@ -22,6 +22,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Course whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Course onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Course withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Course withoutTrashed()
  * @mixin \Eloquent
  */
 class Course extends Model

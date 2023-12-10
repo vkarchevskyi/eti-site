@@ -31,6 +31,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Semester whereStudyingEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Semester whereStudyingStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Semester whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Semester onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Semester withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Semester withoutTrashed()
  * @mixin \Eloquent
  */
 class Semester extends Model

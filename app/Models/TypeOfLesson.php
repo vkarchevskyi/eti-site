@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|TypeOfLesson whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TypeOfLesson whereShortName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TypeOfLesson whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TypeOfLesson onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|TypeOfLesson withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|TypeOfLesson withoutTrashed()
  * @mixin \Eloquent
  */
 class TypeOfLesson extends Model
