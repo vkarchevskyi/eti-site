@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TimetableResource\Pages;
-use App\Filament\Resources\TimetableResource\RelationManagers;
 use App\Models\Timetable;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -19,11 +18,23 @@ class TimetableResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $modelLabel = 'Пару';
+
+    protected static ?string $pluralLabel = 'Розклад';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                ...LessonResource::getLessonFormWithoutTime(),
+                Forms\Components\Grid::make()
+                    ->schema([
+                        Forms\Components\DateTimePicker::make('start_at')
+                            ->label('Час початку заняття'),
+                        Forms\Components\DateTimePicker::make('end_at')
+                            ->label('Час кінця заняття'),
+                    ])
+                    ->columnSpan(1)
             ]);
     }
 
@@ -31,7 +42,11 @@ class TimetableResource extends Resource
     {
         return $table
             ->columns([
-                //
+                ...LessonResource::getLessonsTableWithoutTime(),
+                Tables\Columns\TextColumn::make('start_at')
+                    ->label('Початок пари'),
+                Tables\Columns\TextColumn::make('end_at')
+                    ->label('Кінець пари'),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
