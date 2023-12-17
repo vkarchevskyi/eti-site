@@ -154,6 +154,7 @@ class LessonResource extends Resource
                 ->required(),
             Forms\Components\Select::make('course_id')
                 ->label('Дисципліна')
+                ->required()
                 ->relationship('course', 'name'),
             Forms\Components\Select::make('day_of_week_id')
                 ->label('День тижня')
@@ -189,6 +190,8 @@ class LessonResource extends Resource
         return [
             Tables\Columns\TextColumn::make('group.name')
                 ->label('Група'),
+            Tables\Columns\TextColumn::make('course.name')
+                ->label('Дисципліна'),
             Tables\Columns\TextColumn::make('teacher')
                 ->formatStateUsing(
                     fn(Lesson|Timetable $record) => "{$record->teacher->first_name} {$record->teacher->second_name}"

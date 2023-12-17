@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CoursesSeeder::class);
         $this->call(GroupsSeeder::class);
         $this->call(SubgroupsSeeder::class);
-        $this->call(LessonsSeeder::class);
         $this->call(RoomTypesSeeder::class);
+        $this->call(RoomsSeeder::class);
+        $this->call(LessonsSeeder::class);
     }
 }
