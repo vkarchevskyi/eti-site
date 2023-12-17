@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Group whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Group withTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Group withoutTrashed()
+ * @property-read \App\Models\Teacher $supervisor
  * @mixin \Eloquent
  */
 class Group extends Model

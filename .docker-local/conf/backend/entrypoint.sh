@@ -8,5 +8,7 @@ php artisan optimize:clear
 php artisan config:cache
 php artisan optimize
 
+php artisan filament:assets
+
 npm install && npm run build
 exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

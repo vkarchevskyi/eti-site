@@ -29,6 +29,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|News whereShortDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|News whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|News whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|News onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|News withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|News withoutTrashed()
  * @mixin \Eloquent
  */
 class News extends Model

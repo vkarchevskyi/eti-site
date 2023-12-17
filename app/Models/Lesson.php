@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -31,26 +32,29 @@ use Illuminate\Support\Carbon;
  * @property-read \App\Models\Teacher $teacher
  * @property-read \App\Models\TypeOfLesson $typeOfLesson
  * @method static \Database\Factories\LessonFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson query()
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereCourseId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereDayOfWeekId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereGroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereIsNumerator($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereOrder($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereSubgroupId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereTeacherId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereTimeFrom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereTimeTo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereTypeOfLessonId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson withTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|Lesson withoutTrashed()
+ * @method static Builder|Lesson newModelQuery()
+ * @method static Builder|Lesson newQuery()
+ * @method static Builder|Lesson onlyTrashed()
+ * @method static Builder|Lesson query()
+ * @method static Builder|Lesson whereCourseId($value)
+ * @method static Builder|Lesson whereCreatedAt($value)
+ * @method static Builder|Lesson whereDayOfWeekId($value)
+ * @method static Builder|Lesson whereDeletedAt($value)
+ * @method static Builder|Lesson whereGroupId($value)
+ * @method static Builder|Lesson whereId($value)
+ * @method static Builder|Lesson whereIsNumerator($value)
+ * @method static Builder|Lesson whereOrder($value)
+ * @method static Builder|Lesson whereSubgroupId($value)
+ * @method static Builder|Lesson whereTeacherId($value)
+ * @method static Builder|Lesson whereTimeFrom($value)
+ * @method static Builder|Lesson whereTimeTo($value)
+ * @method static Builder|Lesson whereTypeOfLessonId($value)
+ * @method static Builder|Lesson whereUpdatedAt($value)
+ * @method static Builder|Lesson withTrashed()
+ * @method static Builder|Lesson withoutTrashed()
+ * @property int|null $room_id
+ * @method static Builder|Lesson whereRoomId($value)
+ * @property-read \App\Models\Room|null $room
  * @mixin \Eloquent
  */
 class Lesson extends Model
@@ -88,5 +92,10 @@ class Lesson extends Model
     public function subgroup(): BelongsTo
     {
         return $this->belongsTo(Subgroup::class);
+    }
+
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class);
     }
 }

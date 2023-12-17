@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Subgroup whereSubgroupValue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subgroup whereUpdatedAt($value)
  * @property-read int|null $group_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Subgroup onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subgroup withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subgroup withoutTrashed()
  * @mixin \Eloquent
  */
 class Subgroup extends Model

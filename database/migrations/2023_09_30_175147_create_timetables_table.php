@@ -14,15 +14,13 @@ return new class extends Migration
         Schema::create('timetables', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('semester_id');
-            $table->unsignedBigInteger('lesson_id');
             $table->foreign('semester_id')
                 ->references('id')
                 ->on('semesters')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->foreign('lesson_id')
-                ->references('id')
-                ->on('lessons')
+            $table->foreignIdFor(\App\Models\Lesson::class)
+                ->constrained('lessons')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->timestamps();

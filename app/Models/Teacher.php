@@ -30,6 +30,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Teacher whereUpdatedAt($value)
  * @property int $can_be_supervisor
  * @method static \Illuminate\Database\Eloquent\Builder|Teacher whereCanBeSupervisor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Teacher onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Teacher withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Teacher withoutTrashed()
  * @mixin \Eloquent
  */
 class Teacher extends Model
