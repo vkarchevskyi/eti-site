@@ -38,6 +38,8 @@ WORKDIR /var/www
 
 COPY --chown=www-data:www-data . .
 
+RUN echo 'alias a="php artisan"' >> ~/.bashrc
+
 EXPOSE 80 443
 
 ENTRYPOINT ["/scripts/entrypoint.sh"]
