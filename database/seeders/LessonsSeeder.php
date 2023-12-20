@@ -16,7 +16,6 @@ class LessonsSeeder extends Seeder
         // KN-22
         DB::statement(
             "
-SET NAMES utf8mb4;
 INSERT INTO `lessons` (`id`, `group_id`, `order`, `subgroup_id`, `is_numerator`, `type_of_lesson_id`, `teacher_id`, `course_id`, `day_of_week_id`, `time_from`, `time_to`, `created_at`, `updated_at`, `deleted_at`, `room_id`) VALUES
 (1,	1,	1,	1,	NULL,	1,	1,	1,	1,	'08:30',	'10:00',	'2023-09-30 17:30:42',	'2023-12-17 17:52:16',	NULL,	10),
 (2,	1,	2,	2,	NULL,	2,	5,	2,	1,	'10:10',	'11:40',	'2023-09-30 17:44:05',	'2023-12-17 17:52:27',	NULL,	8),

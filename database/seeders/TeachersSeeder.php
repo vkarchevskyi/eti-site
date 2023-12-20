@@ -49,6 +49,7 @@ class TeachersSeeder extends Seeder
                 'first_name' => 'Константин',
                 'second_name' => 'Сурков',
                 'middle_name' => 'Юрійович',
+                'can_be_supervisor' => 1,
             ],
         ];
 
