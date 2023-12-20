@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Teacher;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +15,7 @@ class GroupsSeeder extends Seeder
     {
         DB::table('groups')->insert([
             'name' => 'КН-22',
-            'supervisor_id' => 1,
+            'supervisor_id' => Teacher::query()->where('can_be_supervisor', true)->first()->id,
         ]);
     }
 }

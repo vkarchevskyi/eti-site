@@ -193,15 +193,16 @@ class LessonResource extends Resource
             Tables\Columns\TextColumn::make('course.name')
                 ->label('Дисципліна'),
             Tables\Columns\TextColumn::make('teacher')
+                ->label('Викладач')
                 ->formatStateUsing(
                     fn(Lesson|Timetable $record) => "{$record->teacher->first_name} {$record->teacher->second_name}"
                 ),
             Tables\Columns\TextColumn::make('room.name')
-                ->label('Номер кабінету'),
+                ->label('№ кабінету'),
             Tables\Columns\SelectColumn::make('is_numerator')
                 ->disabled()
                 ->options([
-                    null => 'Чисельник і знаменник',
+                    null => 'Двічі',
                     0 => 'Знаменник',
                     1 => 'Чисельник'
                 ])

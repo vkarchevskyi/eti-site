@@ -40,22 +40,24 @@ return new class extends Migration {
                 ->cascadeOnDelete();
 
             $table->foreignIdFor(TypeOfLesson::class)
+                ->nullable()
                 ->constrained('type_of_lessons')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
             $table->foreignIdFor(Teacher::class)
+                ->nullable()
                 ->constrained('teachers')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
             $table->foreignIdFor(Course::class)
+                ->nullable()
                 ->constrained('courses')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
             $table->dropForeignIdFor(Lesson::class);
-            $table->dropColumn(['lesson_id']);
         });
     }
 
@@ -84,8 +86,6 @@ return new class extends Migration {
                     'day_of_week_id'
                 ]
             );
-
-            $table->foreignIdFor(Lesson::class);
         });
     }
 };
