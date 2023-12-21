@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\MainPage;
+use App\Livewire\TimetableIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', MainPage::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,8 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Route::get('lessons', [LessonsController::class, 'index']);
-
 Route::resource('news', NewsController::class);
 
-require __DIR__.'/auth.php';
+Route::get('/timetable', TimetableIndex::class)->name('timetable.index');
+
+require_once __DIR__.'/auth.php';
