@@ -45,6 +45,7 @@ class GenerateTimetablesService
                         'order' => $lesson->order,
                         'day_of_week_id' => $lesson->day_of_week_id,
                         'group_id' => $lesson->group_id,
+                        'subgroup_id' => $lesson->subgroup_id,
                     ]);
 
                     $record->update([
@@ -53,7 +54,6 @@ class GenerateTimetablesService
                         'type_of_lesson_id' => $lesson->type_of_lesson_id,
                         'is_numerator' => $lesson->is_numerator,
                         'room_id' => $lesson->room_id,
-                        'subgroup_id' => $lesson->subgroup_id,
                         'course_id' => $lesson->course_id
                     ]);
                 }
