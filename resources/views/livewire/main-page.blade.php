@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div class="bg-white mb-10 space-y-8">
     <div class="relative isolate px-6 pt-14 lg:px-8">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
              aria-hidden="true">
@@ -26,7 +26,37 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2 w-1/2 mx-auto justify-items-center justify-center gap-y-3">
+    <div class="flex flex-col gap-y-6 justify-center items-center">
+        <h2 class="text-2xl font-semibold mx-auto text-center">Поточний розклад для </h2>
+        <div class="flex space-x-6">
+            <label>
+                Група:
+                <select
+                    wire:change="updateGroup($event.target.value)"
+                    class="isolate mx-auto text-center"
+                >
+                    @foreach($groups as $group)
+                        <option value="{{ $group->id }}">{{ $group->name }}</option>
+                    @endforeach
+                </select>
+            </label>
+            @if(count($subgroups))
+                <label>
+                    Підгрупа:
+                    <select
+                        wire:change="updateSubgroup($event.target.value)"
+                        class="isolate mx-auto text-center"
+                    >
+                        @foreach($subgroups as $subgroup)
+                            <option value="{{ $subgroup->id }}">{{ $subgroup->subgroup_value }}</option>
+                        @endforeach
+                    </select>
+                </label>
+            @endif
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 w-[64rem] mx-auto justify-items-center justify-center gap-y-3">
         @php
             $now = \Carbon\Carbon::now();
 
