@@ -12,8 +12,9 @@
                 <p class="mt-6 text-lg leading-8 text-gray-600">Сайт наразі знаходиться у розробці, але ти можеш
                     поділитися своїм фідбеком</p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
-                    <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Перейти до розкладу <span
-                            aria-hidden="true">→</span></a>
+                    <a href="#timetable" class="text-sm font-semibold leading-6 text-gray-900">
+                        Перейти до розкладу <span aria-hidden="true">→</span>
+                    </a>
                 </div>
             </div>
         </div>

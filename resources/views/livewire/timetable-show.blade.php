@@ -1,4 +1,4 @@
-<div class="space-y-8">
+<div class="space-y-8" id="timetable">
     <div class="flex flex-col gap-y-6 justify-center items-center">
         <h2 class="text-2xl font-semibold mx-auto text-center">Поточний розклад для </h2>
         <div class="flex space-x-6">

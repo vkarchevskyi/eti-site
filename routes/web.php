@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\MainPage;
+use App\Livewire\NewsIndex;
 use App\Livewire\TimetableShow;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('news', NewsController::class);
-
 Route::get('/timetable', TimetableShow::class)->name('timetable.show');
+
+Route::prefix('news')->group(function () {
+    Route::get('/', NewsIndex::class)->name('news.index');
+});
 
 require_once __DIR__.'/auth.php';
