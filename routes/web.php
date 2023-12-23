@@ -3,7 +3,7 @@
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\MainPage;
-use App\Livewire\TimetableIndex;
+use App\Livewire\TimetableShow;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +31,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('news', NewsController::class);
 
-Route::get('/timetable', TimetableIndex::class)->name('timetable.index');
+Route::get('/timetable', TimetableShow::class)->name('timetable.show');
 
 require_once __DIR__.'/auth.php';
