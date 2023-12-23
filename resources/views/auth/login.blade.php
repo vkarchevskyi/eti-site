@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="flex min-h-full flex-col justify-center px-6 lg:px-8">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')"/>
 
