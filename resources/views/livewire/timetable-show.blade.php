@@ -1,32 +1,36 @@
 <div class="space-y-8" id="timetable">
     <div class="flex flex-col gap-y-6 justify-center items-center">
-        <h2 class="text-2xl font-semibold mx-auto text-center">Поточний розклад для </h2>
-        <div class="flex space-x-6">
-            <label>
-                Група:
-                <select
-                    wire:change="updateGroup($event.target.value)"
-                    class="isolate mx-auto text-center"
-                >
-                    @foreach($groups as $group)
-                        <option value="{{ $group->id }}">{{ $group->name }}</option>
-                    @endforeach
-                </select>
-            </label>
-            @if(count($subgroups))
+        @if($setByUser)
+            <h2 class="text-2xl font-semibold mx-auto text-center">Поточний розклад для тебе:</h2>
+        @else
+            <h2 class="text-2xl font-semibold mx-auto text-center">Поточний розклад для </h2>
+            <div class="flex space-x-6">
                 <label>
-                    Підгрупа:
+                    Група:
                     <select
-                        wire:change="updateSubgroup($event.target.value)"
+                        wire:change="updateGroup($event.target.value)"
                         class="isolate mx-auto text-center"
                     >
-                        @foreach($subgroups as $subgroup)
-                            <option value="{{ $subgroup->id }}">{{ $subgroup->subgroup_value }}</option>
+                        @foreach($groups as $group)
+                            <option value="{{ $group->id }}">{{ $group->name }}</option>
                         @endforeach
                     </select>
                 </label>
-            @endif
-        </div>
+                @if(count($subgroups))
+                    <label>
+                        Підгрупа:
+                        <select
+                            wire:change="updateSubgroup($event.target.value)"
+                            class="isolate mx-auto text-center"
+                        >
+                            @foreach($subgroups as $subgroup)
+                                <option value="{{ $subgroup->id }}">{{ $subgroup->subgroup_value }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                @endif
+            </div>
+        @endif
     </div>
 
     <div class="grid grid-cols-2 w-[64rem] mx-auto justify-items-center justify-center gap-y-3">

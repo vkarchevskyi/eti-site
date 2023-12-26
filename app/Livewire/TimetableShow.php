@@ -3,37 +3,84 @@
 namespace App\Livewire;
 
 use App\Models\Group;
+use App\Models\Semester;
 use App\Models\Subgroup;
 use App\Models\Timetable;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Livewire\Attributes\Locked;
 use Livewire\Component;
 
 class TimetableShow extends Component
 {
+    #[Locked]
     public Collection $groups;
+    #[Locked]
+    public bool $setByUser = false;
 
     public ?Group $activeGroup;
     public ?Subgroup $activeSubgroup;
 
-    public function mount()
+    public function mount(?User $user = null)
     {
         $this->groups = Group::with('subgroups')->get();
-        $this->activeGroup = $this->groups->firstOrFail();
 
-        $this->setActiveSubgroup();
+        if (isset($user?->group_id)) {
+            $this->activeGroup = $this->groups->firstWhere('id', $user->group_id);
+            $this->activeSubgroup = $this->activeGroup->subgroups->firstWhere('id', $user->subgroup_id) ?? null;
+            $this->setByUser = true;
+        } else {
+            $this->activeGroup = $this->groups->firstOrFail();
+            $this->setActiveSubgroup();
+        }
     }
 
     public function render()
     {
+
+
+        $now = Carbon::now();
+
+        $endOfWeek = Carbon::make($now);
+        while (!$endOfWeek->isSunday()) {
+            $endOfWeek->addDay();
+        }
+
+        $endAt = Carbon::make($now)->addDays(7);
+
+        $semester = Semester::query()
+            ->where('studying_end_date', '>=', Carbon::now())
+            ->first();
+
+        $firstWeek = Carbon::make($semester->studying_start_date)->weekOfYear;
+
         /* @var Collection $timetables */
         $timetables = Timetable::with(['group', 'teacher', 'typeOfLesson', 'course', 'subgroup', 'room'])
             ->where('group_id', '=', $this->activeGroup->id)
-            ->where('start_at', '>', now())
-            ->where('end_at', '<', now()->addDays(7))
+            ->where('start_at', '>', $now)
             ->where(function (Builder $query) {
                 $query->where('subgroup_id', '=', $this->activeSubgroup?->id)
                     ->orWhereNull('subgroup_id');
+            })
+            ->where(function (Builder $query) use ($endOfWeek, $endAt, $firstWeek) {
+                $query
+                    ->where(function (Builder $query) use ($endOfWeek, $firstWeek) {
+                        $query->where('end_at', '<=', $endOfWeek)
+                            ->where(function (Builder $query) use ($firstWeek, $endOfWeek) {
+                                $query->where('is_numerator', '=', !(($endOfWeek->weekOfYear - $firstWeek) % 2))
+                                    ->orWhereNull('is_numerator');
+                            });
+                    })
+                    ->orWhere(function (Builder $query) use ($endOfWeek, $endAt, $firstWeek) {
+                        $query->where('start_at', '>=', $endOfWeek)
+                            ->where('end_at', '<', $endAt)
+                            ->where(function (Builder $query) use ($firstWeek, $endAt) {
+                                $query->where('is_numerator', '=', !(($endAt->weekOfYear - $firstWeek) % 2))
+                                    ->orWhereNull('is_numerator');
+                            });
+                    });
             })
             ->orderBy('start_at')
             ->get();

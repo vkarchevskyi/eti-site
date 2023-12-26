@@ -32,7 +32,7 @@ class GenerateTimetablesService
 
             for (
                 /* @var Carbon $date */
-                $date = $now > $semesterStart ? $now : $semesterStart;
+                $date = ($now > $semesterStart ? $now : $semesterStart)->setTime(0, 0);
                 $date <= $semester->studying_end_date;
                 $date->addDay()
             ) {
