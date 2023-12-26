@@ -23,6 +23,9 @@ class NewsResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $modelLabel = 'Новина';
+    protected static ?string $pluralLabel = 'Новини';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -41,6 +44,10 @@ class NewsResource extends Resource
                 Forms\Components\TextInput::make('short_description')
                     ->columnSpanFull()
                     ->label('Короткий опис'),
+                Forms\Components\FileUpload::make('preview_image_path')
+                    ->label('Превь\'ю')
+                    ->disk('public')
+                    ->directory('news'),
                 TiptapEditor::make('content')
                     ->label('Контент')
                     ->profile('default')

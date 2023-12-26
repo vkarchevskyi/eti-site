@@ -13,7 +13,7 @@
                     </form>
                 </div>
             </div>
-            <livewire:timetable-show :user="auth()->user()" />
+            <livewire:timetable-show />
         </div>
     </div>
 </x-app-layout>

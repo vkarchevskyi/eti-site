@@ -23,11 +23,13 @@ class TimetableShow extends Component
     public ?Group $activeGroup;
     public ?Subgroup $activeSubgroup;
 
-    public function mount(?User $user = null)
+    public function mount(): void
     {
         $this->groups = Group::with('subgroups')->get();
+        /* @var User|null $user */
+        $user = auth()->user();
 
-        if (isset($user?->group_id)) {
+        if (isset($user?->id) && isset($user?->group_id)) {
             $this->activeGroup = $this->groups->firstWhere('id', $user->group_id);
             $this->activeSubgroup = $this->activeGroup->subgroups->firstWhere('id', $user->subgroup_id) ?? null;
             $this->setByUser = true;
@@ -39,22 +41,18 @@ class TimetableShow extends Component
 
     public function render()
     {
-
-
-        $now = Carbon::now();
-
-        $endOfWeek = Carbon::make($now);
-        while (!$endOfWeek->isSunday()) {
-            $endOfWeek->addDay();
-        }
-
-        $endAt = Carbon::make($now)->addDays(7);
-
         $semester = Semester::query()
             ->where('studying_end_date', '>=', Carbon::now())
             ->first();
 
         $firstWeek = Carbon::make($semester->studying_start_date)->weekOfYear;
+
+        $now = Carbon::now();
+        $endAt = Carbon::make($now)->addDays(7);
+        $endOfWeek = Carbon::make($now);
+        while (!$endOfWeek->isSunday()) {
+            $endOfWeek->addDay();
+        }
 
         /* @var Collection $timetables */
         $timetables = Timetable::with(['group', 'teacher', 'typeOfLesson', 'course', 'subgroup', 'room'])
