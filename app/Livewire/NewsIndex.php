@@ -14,7 +14,7 @@ class NewsIndex extends Component
     {
         $news = News::query()
             ->orderBy('created_at', 'desc')
-            ->paginate(4);
+            ->paginate(9);
 
         return view('livewire.news-index', [
             'news' => $news,
