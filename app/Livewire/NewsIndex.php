@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class TimetableIndex extends Component
+class NewsIndex extends Component
 {
     public function render()
     {
-        return view('livewire.timetable-index');
+        return view('livewire.news-index');
     }
 }
