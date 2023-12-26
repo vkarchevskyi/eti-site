@@ -23,11 +23,13 @@ class TimetableShow extends Component
     public ?Group $activeGroup;
     public ?Subgroup $activeSubgroup;
 
-    public function mount(?User $user = null): void
+    public function mount(): void
     {
         $this->groups = Group::with('subgroups')->get();
+        /* @var User|null $user */
+        $user = auth()->user();
 
-        if (isset($user?->group_id)) {
+        if (isset($user?->id) && isset($user?->group_id)) {
             $this->activeGroup = $this->groups->firstWhere('id', $user->group_id);
             $this->activeSubgroup = $this->activeGroup->subgroups->firstWhere('id', $user->subgroup_id) ?? null;
             $this->setByUser = true;
