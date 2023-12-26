@@ -35,6 +35,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static Builder|News withoutTrashed()
  * @property string $slug
  * @method static Builder|News whereSlug($value)
+ * @property string|null $preview_image_path
+ * @method static Builder|News wherePreviewImagePath($value)
  * @mixin \Eloquent
  */
 class News extends Model
