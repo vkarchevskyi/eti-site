@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\MainPage;
 use App\Livewire\NewsIndex;
+use App\Livewire\NewsShow;
 use App\Livewire\TimetableShow;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::get('/timetable', TimetableShow::class)->name('timetable.show');
 
 Route::prefix('news')->group(function () {
     Route::get('/', NewsIndex::class)->name('news.index');
+    Route::get('/{slug}', NewsShow::class)->name('news.show');
 });
 
 require_once __DIR__.'/auth.php';
