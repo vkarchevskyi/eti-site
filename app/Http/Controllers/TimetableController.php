@@ -21,7 +21,8 @@ class TimetableController extends Controller
             ->groupBy(fn(Timetable $lesson) => Carbon::make($lesson->start_at)->format('Y-m-d'))
             ->map(fn(Collection $lesson) => $lesson->map(fn(Timetable $lesson) => [
                 'order' => $lesson->order,
-                'room_name' => $lesson->room->roomType->name,
+                'room_name' => $lesson->room->name,
+                'room_type' => $lesson->room->roomType->name,
                 'course_name' => $lesson->course->name,
                 'type_of_lesson' => $lesson->typeOfLesson->name,
                 'teacher' => [
