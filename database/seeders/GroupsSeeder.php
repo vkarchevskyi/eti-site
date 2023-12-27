@@ -13,9 +13,17 @@ class GroupsSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('groups')->insert([
-            'name' => 'КН-22',
-            'supervisor_id' => Teacher::query()->where('can_be_supervisor', true)->first()->id,
-        ]);
+        DB::table('groups')->insert(
+            [
+                [
+                    'name' => 'КН-22',
+                    'supervisor_id' => Teacher::query()->where('can_be_supervisor', true)->first()->id,
+                ],
+                [
+                    'name' => 'КН-21',
+                    'supervisor_id' => Teacher::query()->where('can_be_supervisor', true)->first()->id,
+                ],
+            ]
+        );
     }
 }
